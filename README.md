@@ -26,3 +26,36 @@ Para ilustrar el uso del framework Spring, y el ambiente de desarrollo para el u
 	```
 	
 6.	Modifique la configuración con anotaciones para que el Bean ‘GrammarChecker‘ ahora haga uso del  la clase SpanishSpellChecker (para que a GrammarChecker se le inyecte EnglishSpellChecker en lugar de  SpanishSpellChecker. Verifique el nuevo resultado.
+
+
+
+### Desarrollo Taller
+
+Cuando ejecutamos el codigo, notamos que hay bastantes errores, esto debido a que faltan las anotaciones necesarias
+para las diferentes clases, para ellos debemos asignar las anotaciones @Component y @Autowired, para la clases grammarcheker
+Esto hara que la clase sea un Bean, y como bien dice la descripción tiene algo tipo "SpellCHecker", pues este metodo
+lo vamos a sobreescribir en nuestra clase utilizando la anotación @Autowired
+
+![](img/1.png) 
+
+
+* EnglishSpellChecker y SpanishSpellChecker son las dos clases que pueden ser inyectados. 
+Se debe seleccionar uno,mas NO ambos (habría conflicto de resolución de dependencias). 
+Por ahora haga que se use EnglishSpellChecker.
+
+Al ya tener asignadas las anotaciones en el GrammarChecker, podemos asignar a cada clase como un servicio.
+Ahora bien para que no se instancien ambos al mismo tiempo podriamos utilizar la anotación @Primary para que no existan problemas de inyección
+
+![](img/2.png) 
+
+![](img/3.png) 
+
+Se realizo un programa de prueba, donde se crea una instancia de GrammarChecker
+
+![](img/4.png) 
+
+![](img/5.png) 
+
+
+Para la ultima parte, solamente dejariamos de usar la anotación @Primary en EnglishSpellChecker y la pondríamos en SpanishSpellChecker
+
